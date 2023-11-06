@@ -49,17 +49,14 @@ const TaskItem = (props) => {
     event.preventDefault();
     if (state.isComplete === false) {
       dispatch({ type: "markComplete" });
-      await fetch(
-        "https://648b5c578ff4be0008a27c29--sweet-valkyrie-facc31.netlify.app/.netlify/functions/api",
-        {
-          method: "PUT",
-          mode: "cors",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ ...state.task, completed: true }),
-        }
-      );
+      await fetch("https://task-manager-server-4tfz.onrender.com/", {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ ...state.task, completed: true }),
+      });
     } else {
       dispatch({ type: "markIncomplete" });
       await fetch(

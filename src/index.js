@@ -18,7 +18,7 @@ const router = createBrowserRouter(
       element={<App />}
       loader={async () => {
         const result = await fetch(
-          "https://648b5c578ff4be0008a27c29--sweet-valkyrie-facc31.netlify.app/.netlify/functions/api",
+          "https://task-manager-server-4tfz.onrender.com/",
           { mode: "cors" }
         );
         const data = await result.json();
