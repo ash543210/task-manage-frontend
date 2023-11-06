@@ -59,17 +59,14 @@ const TaskItem = (props) => {
       });
     } else {
       dispatch({ type: "markIncomplete" });
-      await fetch(
-        "https://648b5c578ff4be0008a27c29--sweet-valkyrie-facc31.netlify.app/.netlify/functions/api",
-        {
-          method: "PUT",
-          mode: "cors",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ ...state.task, completed: false }),
-        }
-      );
+      await fetch("https://task-manager-server-4tfz.onrender.com/", {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ ...state.task, completed: false }),
+      });
     }
   };
 
@@ -85,17 +82,14 @@ const TaskItem = (props) => {
   const deleteTask = async (event) => {
     event.preventDefault();
     dispatch({ type: "deleteTask", task: undefined });
-    await fetch(
-      "https://648b5c578ff4be0008a27c29--sweet-valkyrie-facc31.netlify.app/.netlify/functions/api",
-      {
-        method: "DELETE",
-        mode: "cors",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ _id: state.task._id }),
-      }
-    );
+    await fetch("https://task-manager-server-4tfz.onrender.com/", {
+      method: "DELETE",
+      mode: "cors",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ _id: state.task._id }),
+    });
   };
 
   return (
